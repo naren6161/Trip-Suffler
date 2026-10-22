@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Bengaluru Trip Shuffler</title>
+  <meta name="description" content="Shuffle a full trip plan from Bengaluru that fits inside ₹25,000 per person.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Start point · Bengaluru (SBC / BLR) · ₹25,000 per head, all in</div>
+    <h1>Trip <span>Shuffler</span></h1>
+    <p>Set your filters, hit shuffle, and get a full plan from Bengaluru: return travel, stay, food, local transport, entry tickets and a buffer, all inside ₹25,000 per person.</p>
+  </header>
+
+  <section class="controls" aria-label="Filters">
+    <div class="field">
+      <span class="lbl">Vibe</span>
+      <div class="chips" id="vibes"></div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="days">Days available</label>
+        <select id="days">
+          <option value="2">Up to 2 days</option>
+          <option value="3">Up to 3 days</option>
+          <option value="4">Up to 4 days</option>
+          <option value="5" selected>5 days or more</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="mode">Getting there</label>
+        <select id="mode">
+          <option value="any">Any</option>
+          <option value="bus">Bus</option>
+          <option value="train">Train</option>
+          <option value="flight">Flight</option>
+        </select>
+      </div>
+      <div class="field">
+        <span class="lbl">Style</span>
+        <div class="seg" id="style">
+          <button type="button" data-v="budget" aria-pressed="true">Backpacker</button>
+          <button type="button" data-v="comfort" aria-pressed="false">Comfort</button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="people">People</label>
+        <input id="people" type="number" min="1" max="30" value="4" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="season">Season</label>
+        <select id="season">
+          <option value="any">Any time</option>
+          <option value="now" selected>Good right now</option>
+        </select>
+      </div>
+    </div>
+    <div class="shuffle-bar">
+      <button class="shuffle" id="shuffleBtn" type="button">Shuffle trip</button>
+      <span class="count" id="count"></span>
+    </div>
+  </section>
+
+  <article class="ticket" id="ticket" aria-live="polite"></article>
+
+  <section class="history" id="historyWrap" hidden>
+    <div class="eyebrow">Recent picks</div>
+    <div class="chips" id="history"></div>
+  </section>
+
+  <p class="foot">Prices are 2026 estimates per person for budget-to-mid options and assume sharing a room (2–3 per room) and shared local transport. Weekends, long weekends and Dec 20–Jan 2 run 20–40% higher, so book trains on IRCTC about 60 days out and buses on KSRTC/KSRTC Kerala/TNSTC or redBus early. Comfort mode swaps in AC sleeper or 3A/2A, better hotels and sit-down meals; trips that can't stay under ₹25,000 in that mode drop out of the shuffle.</p>
+</div>
+
+<script src="trips.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
