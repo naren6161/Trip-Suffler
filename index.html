@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -40,6 +41,8 @@
           <option value="bus">Bus</option>
           <option value="train">Train</option>
           <option value="flight">Flight</option>
+          <option value="car">Car (self-drive)</option>
+          <option value="bike">Bike (ride)</option>
         </select>
       </div>
       <div class="field">
@@ -60,6 +63,13 @@
           <option value="now" selected>Good right now</option>
         </select>
       </div>
+      <div class="field">
+        <label for="visitedFilter">Been there</label>
+        <select id="visitedFilter">
+          <option value="show">Include visited</option>
+          <option value="hide">Skip visited</option>
+        </select>
+      </div>
     </div>
     <div class="shuffle-bar">
       <button class="shuffle" id="shuffleBtn" type="button">Shuffle trip</button>
@@ -74,10 +84,30 @@
     <div class="chips" id="history"></div>
   </section>
 
-  <p class="foot">Prices are 2026 estimates per person for budget-to-mid options and assume sharing a room (2–3 per room) and shared local transport. Weekends, long weekends and Dec 20–Jan 2 run 20–40% higher, so book trains on IRCTC about 60 days out and buses on KSRTC/KSRTC Kerala/TNSTC or redBus early. Comfort mode swaps in AC sleeper or 3A/2A, better hotels and sit-down meals; trips that can't stay under ₹25,000 in that mode drop out of the shuffle.</p>
+  <section class="mapcard" aria-labelledby="mapTitle">
+    <div class="map-head">
+      <div>
+        <div class="eyebrow">Your travel map</div>
+        <h2 id="mapTitle">Places you've been</h2>
+      </div>
+      <div class="stats" id="mapStats"></div>
+    </div>
+    <form class="place-form" id="placeForm" role="search">
+      <input id="placeInput" type="search" placeholder="Search any place in the world, e.g. Leh, Paris, Kyoto" autocomplete="off" aria-label="Search a place">
+      <button class="btn" type="submit">Search</button>
+    </form>
+    <div class="results" id="placeResults" aria-live="polite" hidden></div>
+    <div class="map" id="map"></div>
+    <p class="hint">Search a place or tap anywhere on the map, then mark it visited. Shuffler trips show as small dots; the dashed line is the trip on your ticket.</p>
+    <ul class="visited" id="visitedList"></ul>
+  </section>
+
+  <p class="foot">Prices are 2026 estimates per person for budget-to-mid options and assume sharing a room (2–3 per room) and shared local transport. Weekends, long weekends and Dec 20–Jan 2 run 20–40% higher, so book trains on IRCTC about 60 days out and buses on KSRTC/KSRTC Kerala/TNSTC or redBus early. Comfort mode swaps in AC sleeper or 3A/2A, better hotels and sit-down meals; trips that can't stay under ₹25,000 in that mode drop out of the shuffle. Car costs assume fuel + tolls at about ₹8.5/km with up to 5 per car; bike costs assume about ₹3.5/km with 2 per bike. Visited places are saved in this browser only.</p>
 </div>
 
+<script src="vendor/leaflet/leaflet.js"></script>
 <script src="trips.js"></script>
 <script src="app.js"></script>
+<script src="map.js"></script>
 </body>
 </html>

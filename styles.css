@@ -106,3 +106,46 @@ input[type=number]{width:84px;font-family:var(--mono)}
 @keyframes land{from{transform:translateY(-14px);opacity:.3}to{transform:none;opacity:1}}
 .landed{animation:land .35s ease-out}
 @media (prefers-reduced-motion:reduce){.landed{animation:none}}
+
+/* travel-mode switch on the ticket */
+.seg.travel{flex-wrap:wrap;max-width:100%;justify-self:start}
+.seg.travel button{display:grid;gap:1px;text-align:left;padding:6px 12px}
+.seg.travel button small{font-family:var(--mono);font-size:11px;opacity:.75}
+.btn.on{background:var(--good);border-color:var(--good);color:var(--surface)}
+.btn.sm{font-size:12px;padding:4px 10px}
+
+/* travel map */
+.mapcard{display:grid;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+.map-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px 18px}
+.map-head h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,40px);line-height:1;text-transform:uppercase}
+.stats{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--muted)}
+.stats b{font-family:var(--mono);color:var(--ink);font-size:15px}
+.place-form{display:flex;gap:8px}
+.place-form input{flex:1;min-width:0;font:inherit;font-size:14px;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.results{border:1px solid var(--line);border-radius:10px;background:var(--surface-2);padding:6px 12px}
+.results ul,.visited{list-style:none;margin:0;padding:0;display:grid}
+.results li,.visited li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dotted var(--line)}
+.results li:last-child,.visited li:last-child{border-bottom:0}
+.vname{min-width:0;font-weight:600}
+.vname small{display:block;font-weight:400;font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.vact{display:flex;gap:6px;flex-shrink:0}
+.visited li.none,.muted{color:var(--muted);font-size:14px;margin:6px 0}
+.map{height:min(60vh,460px);min-height:300px;border-radius:12px;border:1px solid var(--line);overflow:hidden;background:var(--surface-2);z-index:0}
+.map .empty{height:100%;display:grid;place-items:center}
+.hint{margin:0;font-size:13px;color:var(--muted)}
+.leaflet-container{font-family:var(--body)}
+.leaflet-popup-content{margin:12px 14px;font-size:14px;line-height:1.4}
+.pop-act{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pop-act .btn{background:#F5F8F5;color:#13221E;border-color:#D5DDD8}
+.leaflet-interactive.mk-trip{stroke:var(--teal);fill:var(--surface);fill-opacity:1}
+.leaflet-interactive.mk-current{stroke:var(--accent);fill:var(--accent);fill-opacity:.9;stroke-width:3}
+.leaflet-interactive.mk-visited{stroke:var(--surface);fill:var(--good);fill-opacity:1}
+.leaflet-interactive.mk-current-v{stroke:var(--accent);stroke-width:3}
+.leaflet-interactive.mk-home{stroke:var(--surface);fill:var(--ink);fill-opacity:1}
+.leaflet-interactive.mk-route{stroke:var(--accent);fill:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .map .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.85) contrast(.9)}}
+:root[data-theme="dark"] .map .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.85) contrast(.9)}
+@media (max-width:720px){
+  .mapcard{padding:14px}
+  .results li,.visited li{flex-wrap:wrap}
+}

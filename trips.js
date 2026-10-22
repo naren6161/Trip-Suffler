@@ -1,7 +1,8 @@
 // Trip catalogue. Costs are per person, backpacker baseline (₹): [amount, note].
-// best = months (1–12) when the trip is in season.
+// best = months (1–12) when the trip is in season. lat/lng place it on the map;
+// road:false means it can't be reached by car or bike.
 const TRIPS = [
- {id:"coorg",name:"Coorg",region:"Madikeri, Karnataka",code:"MDK",vibe:["Hills","Nature"],days:3,nights:2,mode:"bus",km:265,
+ {id:"coorg",name:"Coorg",region:"Madikeri, Karnataka",code:"MDK",vibe:["Hills","Nature"],days:3,nights:2,mode:"bus",km:265,lat:12.4244,lng:75.7382,
   best:[10,11,12,1,2,3],
   pitch:"Coffee estates, misty viewpoints and Kodava food, five hours down the Mysuru road.",
   out:"KSRTC Airavat, Shanthinagar → Madikeri, ~6 hrs",
@@ -9,7 +10,7 @@ const TRIPS = [
   plan:["Early bus from Bengaluru, reach by noon. Check in, sunset at Raja's Seat, Madikeri market.","Dubare elephant camp in the morning, Golden Temple at Bylakuppe, Nisargadhama on the way back.","Abbey Falls and a coffee plantation walk, buy coffee and spices, afternoon bus home."],
   tips:["Book a homestay that includes breakfast; it saves ₹200–300 a day.","Carry a rain layer even in winter mornings."]},
 
- {id:"chikmagalur",name:"Chikmagalur",region:"Chikkamagaluru, Karnataka",code:"CKM",vibe:["Hills","Nature"],days:3,nights:2,mode:"bus",km:245,
+ {id:"chikmagalur",name:"Chikmagalur",region:"Chikkamagaluru, Karnataka",code:"CKM",vibe:["Hills","Nature"],days:3,nights:2,mode:"bus",km:245,lat:13.3161,lng:75.772,
   best:[9,10,11,12,1,2],
   pitch:"Karnataka's highest peak, coffee country and cold mornings, an easy overnight from the city.",
   out:"KSRTC from Majestic, ~5.5 hrs",
@@ -17,7 +18,7 @@ const TRIPS = [
   plan:["Morning bus, check in, evening at Hirekolale lake.","Sunrise drive up Mullayanagiri, Baba Budangiri, then Jhari falls by jeep.","Coffee Museum, estate walk, bus back to Bengaluru by night."],
   tips:["Leave for Mullayanagiri by 5 am to beat the crowds and the cloud.","Weekend jeep shares fill fast; book via your homestay."]},
 
- {id:"gokarna",name:"Gokarna",region:"Uttara Kannada, Karnataka",code:"GOK",vibe:["Beach"],days:3,nights:2,mode:"bus",km:485,
+ {id:"gokarna",name:"Gokarna",region:"Uttara Kannada, Karnataka",code:"GOK",vibe:["Beach"],days:3,nights:2,mode:"bus",km:485,lat:14.5479,lng:74.3188,
   best:[10,11,12,1,2,3],
   pitch:"Quiet cliff-and-cove beaches you walk between, with a temple town at the end of the road.",
   out:"Overnight sleeper bus to Gokarna, ~9 hrs (or train to Gokarna Road)",
@@ -25,7 +26,7 @@ const TRIPS = [
   plan:["Arrive early on the overnight bus, Mahabaleshwar temple, sunset at Kudle beach.","Beach trek Kudle → Om → Half Moon → Paradise, boat back in the afternoon.","Lazy morning at Om beach, checkout and catch the evening sleeper home."],
   tips:["Two overnight bus rides mean you save two hotel nights.","Start the beach trek before 9 am; the rocks get hot."]},
 
- {id:"hampi",name:"Hampi",region:"Vijayanagara, Karnataka",code:"HPT",vibe:["Heritage"],days:3,nights:2,mode:"train",km:340,
+ {id:"hampi",name:"Hampi",region:"Vijayanagara, Karnataka",code:"HPT",vibe:["Heritage"],days:3,nights:2,mode:"train",km:340,lat:15.335,lng:76.46,
   best:[10,11,12,1,2],
   pitch:"Boulder fields and the ruins of the Vijayanagara empire, a UNESCO site best seen by bicycle.",
   out:"Hampi Express 16591 from SBC to Hosapete, overnight",
@@ -33,7 +34,7 @@ const TRIPS = [
   plan:["Reach Hosapete at dawn, auto to Hampi. Virupaksha temple, sunset from Hemakuta hill.","Cycle to Vittala temple (stone chariot), Queen's Bath, Lotus Mahal, Elephant stables.","Sunrise at Matanga hill, coracle ride on the Tungabhadra, night train home."],
   tips:["One ASI ticket covers Vittala, Lotus Mahal and Elephant stables on the same day.","Carry water and a cap; there's little shade."]},
 
- {id:"mysuru",name:"Mysuru",region:"Mysuru, Karnataka",code:"MYS",vibe:["Heritage"],days:2,nights:1,mode:"train",km:145,
+ {id:"mysuru",name:"Mysuru",region:"Mysuru, Karnataka",code:"MYS",vibe:["Heritage"],days:2,nights:1,mode:"train",km:145,lat:12.2958,lng:76.6394,
   best:[9,10,11,12,1,2,3],
   pitch:"The palace, Chamundi hill and Srirangapatna, the cheapest good weekend from the city.",
   out:"Vande Bharat / Shatabdi or passenger train, SBC → MYS, ~2–3 hrs",
@@ -41,7 +42,7 @@ const TRIPS = [
   plan:["Morning train, Mysore Palace, Devaraja market, evening palace illumination (Sundays).","Chamundi hill sunrise, Srirangapatna and Ranganathittu birds, evening train back."],
   tips:["Palace lights come on Sundays and holidays, 7–7:45 pm.","This one leaves room in the budget for a second trip."]},
 
- {id:"ooty",name:"Ooty & Coonoor",region:"Nilgiris, Tamil Nadu",code:"UAM",vibe:["Hills"],days:3,nights:2,mode:"bus",km:270,
+ {id:"ooty",name:"Ooty & Coonoor",region:"Nilgiris, Tamil Nadu",code:"UAM",vibe:["Hills"],days:3,nights:2,mode:"bus",km:270,lat:11.4102,lng:76.695,
   best:[10,11,12,1,2,3,4,5],
   pitch:"Tea gardens and the Nilgiri Mountain Railway toy train, through Bandipur and Mudumalai.",
   out:"KSRTC / TNSTC via Mysuru and Bandipur, ~7 hrs",
@@ -49,7 +50,7 @@ const TRIPS = [
   plan:["Day bus through Bandipur forest, evening at Ooty lake and market.","Doddabetta peak, Botanical Garden, Pykara falls & lake.","Toy train to Coonoor, Sim's Park and Dolphin's Nose, bus home."],
   tips:["Book the toy train on IRCTC; seats go weeks ahead.","Forest check-post closes at night, so plan daytime buses."]},
 
- {id:"wayanad",name:"Wayanad",region:"Kerala",code:"WYD",vibe:["Hills","Nature"],days:3,nights:2,mode:"bus",km:280,
+ {id:"wayanad",name:"Wayanad",region:"Kerala",code:"WYD",vibe:["Hills","Nature"],days:3,nights:2,mode:"bus",km:280,lat:11.6085,lng:76.083,
   best:[10,11,12,1,2,3,4,5],
   pitch:"Caves with prehistoric carvings, a heart-shaped lake trek and lush Kerala hill country.",
   out:"KSRTC to Kalpetta via Mysuru, ~6.5 hrs",
@@ -57,7 +58,7 @@ const TRIPS = [
   plan:["Bus to Kalpetta, Pookode lake in the evening.","Chembra peak trek to the heart-shaped lake, then Banasura Sagar dam.","Edakkal caves in the morning, spice shopping, bus back."],
   tips:["Chembra trek permits are limited daily; reach the forest office by 7 am.","Edakkal caves are closed on Mondays."]},
 
- {id:"pondy",name:"Pondicherry",region:"Puducherry",code:"PDY",vibe:["Beach","Heritage"],days:3,nights:2,mode:"bus",km:310,
+ {id:"pondy",name:"Pondicherry",region:"Puducherry",code:"PDY",vibe:["Beach","Heritage"],days:3,nights:2,mode:"bus",km:310,lat:11.9416,lng:79.8083,
   best:[10,11,12,1,2,3],
   pitch:"French Quarter streets, Auroville and cafe hopping by scooter.",
   out:"KSRTC / PRTC AC bus, ~7 hrs",
@@ -65,7 +66,7 @@ const TRIPS = [
   plan:["Overnight or early bus, walk White Town, Promenade at sunset.","Auroville and Matrimandir viewpoint, Serenity beach, cafe dinner.","Paradise beach ferry in the morning, bus back in the afternoon."],
   tips:["Matrimandir inner chamber needs a booking a day ahead.","Scooters run ₹350–450/day; carry your licence."]},
 
- {id:"kodai",name:"Kodaikanal",region:"Dindigul, Tamil Nadu",code:"KDK",vibe:["Hills"],days:3,nights:2,mode:"bus",km:465,
+ {id:"kodai",name:"Kodaikanal",region:"Dindigul, Tamil Nadu",code:"KDK",vibe:["Hills"],days:3,nights:2,mode:"bus",km:465,lat:10.2381,lng:77.4892,
   best:[10,11,12,1,2,3,4,5],
   pitch:"Pine forests, a star-shaped lake and cliff walks above the clouds.",
   out:"Overnight sleeper bus, ~10 hrs",
@@ -73,7 +74,7 @@ const TRIPS = [
   plan:["Arrive in the morning, cycle around Kodai lake, Coaker's Walk at sunset.","Sightseeing loop: Pillar Rocks, Guna caves, Pine forest, Moir Point.","Bryant Park and homemade chocolates, overnight bus home."],
   tips:["Nights drop to 8–10°C from Nov–Jan, so pack a jacket.","Hire the cab loop from the lake stand, not the hotel."]},
 
- {id:"udupi",name:"Udupi & Murudeshwar",region:"Coastal Karnataka",code:"UD",vibe:["Beach","Spiritual"],days:3,nights:2,mode:"bus",km:400,
+ {id:"udupi",name:"Udupi & Murudeshwar",region:"Coastal Karnataka",code:"UD",vibe:["Beach","Spiritual"],days:3,nights:2,mode:"bus",km:400,lat:13.3409,lng:74.7421,
   best:[10,11,12,1,2,3],
   pitch:"Temple town meals, St. Mary's basalt islands and the seaside Shiva at Murudeshwar.",
   out:"Overnight sleeper bus to Udupi, ~8 hrs",
@@ -81,7 +82,7 @@ const TRIPS = [
   plan:["Arrive early, Krishna temple and Udupi meals, sunset at Malpe beach.","Boat to St. Mary's island, Kaup lighthouse in the evening.","Train or bus to Murudeshwar, temple tower views, sleeper bus home."],
   tips:["St. Mary's boats run Oct–May only.","Netrani scuba (~₹4,000) fits if you skip one paid activity."]},
 
- {id:"goa",name:"South & North Goa",region:"Goa",code:"MAO",vibe:["Beach"],days:4,nights:3,mode:"train",km:560,
+ {id:"goa",name:"South & North Goa",region:"Goa",code:"MAO",vibe:["Beach"],days:4,nights:3,mode:"train",km:560,lat:15.2832,lng:73.9862,
   best:[10,11,12,1,2,3],
   pitch:"Beaches, forts, old Portuguese churches and a scooter, without the big-hotel bill.",
   out:"Overnight train SBC/YPR → Madgaon or Vasco, ~13 hrs",
@@ -89,7 +90,7 @@ const TRIPS = [
   plan:["Reach Madgaon, check in near Colva/Palolem, sunset at Cabo de Rama fort.","Dudhsagar falls jeep safari, Old Goa churches on the way back.","North Goa: Fort Aguada, Baga & Anjuna, Chapora fort at sunset.","Fontainhas walk in Panjim, shop at Mapusa, evening train home."],
   tips:["Avoid Dec 20–Jan 2; stays double.","Dudhsagar jeeps run from Kulem, roughly Oct–May."]},
 
- {id:"munnar",name:"Munnar",region:"Idukki, Kerala",code:"MNR",vibe:["Hills","Nature"],days:4,nights:3,mode:"bus",km:480,
+ {id:"munnar",name:"Munnar",region:"Idukki, Kerala",code:"MNR",vibe:["Hills","Nature"],days:4,nights:3,mode:"bus",km:480,lat:10.0889,lng:77.0595,
   best:[9,10,11,12,1,2,3],
   pitch:"Endless tea slopes, the Nilgiri tahr at Eravikulam and sunrise on Kolukkumalai.",
   out:"Overnight KSRTC Kerala / private sleeper, ~11 hrs",
@@ -97,7 +98,7 @@ const TRIPS = [
   plan:["Arrive in the morning, Tea Museum, Attukad waterfalls.","Eravikulam National Park for the tahr, Mattupetty dam and Echo Point.","Pre-dawn jeep to Kolukkumalai for sunrise over the clouds, spice garden.","Top Station views, buy tea and spices, overnight bus home."],
   tips:["Book Eravikulam tickets online; it shuts Feb–Mar for calving.","Kolukkumalai jeeps leave from Suryanelli around 4 am."]},
 
- {id:"alleppey",name:"Alleppey & Kochi",region:"Kerala",code:"ERS",vibe:["Backwaters","Heritage"],days:4,nights:3,mode:"train",km:560,
+ {id:"alleppey",name:"Alleppey & Kochi",region:"Kerala",code:"ERS",vibe:["Backwaters","Heritage"],days:4,nights:3,mode:"train",km:560,lat:9.4981,lng:76.3388,
   best:[9,10,11,12,1,2,3],
   pitch:"A night on a backwater houseboat plus Fort Kochi's old streets and Chinese nets.",
   out:"Overnight train SBC → Ernakulam (Kochuveli/Island Express), ~11 hrs",
@@ -105,7 +106,7 @@ const TRIPS = [
   plan:["Reach Ernakulam, Fort Kochi walk: Chinese nets, Jew Town, Mattancherry palace.","Train to Alleppey, board the houseboat by noon, cruise Vembanad lake.","Disembark, village canoe ride in the narrow canals, back to Kochi, Kathakali in the evening.","Marine Drive, shopping on Broadway, overnight train home."],
   tips:["A 2-bedroom houseboat split between 4 is the sweet spot on price.","Houseboats must dock by 5:30 pm; sunset is from the boat."]},
 
- {id:"varkala",name:"Varkala & Kovalam",region:"Thiruvananthapuram, Kerala",code:"VAK",vibe:["Beach"],days:4,nights:3,mode:"train",km:740,
+ {id:"varkala",name:"Varkala & Kovalam",region:"Thiruvananthapuram, Kerala",code:"VAK",vibe:["Beach"],days:4,nights:3,mode:"train",km:740,lat:8.7379,lng:76.7163,
   best:[10,11,12,1,2,3],
   pitch:"Red cliffs over the Arabian Sea, surf lessons and a lighthouse beach down south.",
   out:"Overnight train SBC → Varkala Sivagiri, ~15 hrs",
@@ -113,7 +114,7 @@ const TRIPS = [
   plan:["Arrive by afternoon, North Cliff walk and sunset.","Beginner surf lesson in the morning, Kappil beach and backwaters.","Day trip to Jatayu Earth's Center and Kovalam lighthouse beach.","Papanasam beach morning, evening train home."],
   tips:["Black beach on the north end is quieter than Papanasam.","Surf season is Oct–Apr."]},
 
- {id:"hyd",name:"Hyderabad",region:"Telangana",code:"HYB",vibe:["Heritage","Food"],days:3,nights:2,mode:"train",km:570,
+ {id:"hyd",name:"Hyderabad",region:"Telangana",code:"HYB",vibe:["Heritage","Food"],days:3,nights:2,mode:"train",km:570,lat:17.385,lng:78.4867,
   best:[10,11,12,1,2],
   pitch:"Golconda, Charminar, Qutb Shahi tombs and a lot of biryani.",
   out:"Overnight train SBC → Kacheguda, ~11 hrs",
@@ -121,7 +122,7 @@ const TRIPS = [
   plan:["Reach in the morning, Charminar, Laad Bazaar, Chowmahalla palace.","Golconda fort and the sound-and-light show, Qutb Shahi tombs.","Ramoji Film City or Salar Jung + Hussain Sagar, overnight train home."],
   tips:["Charminar area is best before 10 am.","Ramoji alone is ~₹1,500; swap it for museums to save."]},
 
- {id:"madurai",name:"Madurai & Rameswaram",region:"Tamil Nadu",code:"MDU",vibe:["Spiritual","Heritage","Beach"],days:4,nights:3,mode:"train",km:440,
+ {id:"madurai",name:"Madurai & Rameswaram",region:"Tamil Nadu",code:"MDU",vibe:["Spiritual","Heritage","Beach"],days:4,nights:3,mode:"train",km:440,lat:9.9252,lng:78.1198,
   best:[10,11,12,1,2,3],
   pitch:"Meenakshi temple towers, the Pamban bridge and the ghost town of Dhanushkodi.",
   out:"Overnight train SBC → Madurai, ~9 hrs",
@@ -129,7 +130,7 @@ const TRIPS = [
   plan:["Meenakshi Amman temple, Thirumalai Nayak palace, jigarthanda at night.","Train over the Pamban bridge to Rameswaram, Ramanathaswamy temple corridors.","Dhanushkodi and Arichal Munai at sunrise, Kalam memorial.","Back to Madurai, overnight train home."],
   tips:["Temples have dress codes; carry a dhoti or shawl.","Dhanushkodi road closes by evening."]},
 
- {id:"kabini",name:"Kabini",region:"Nagarhole, Karnataka",code:"KBN",vibe:["Wildlife","Nature"],days:2,nights:1,mode:"bus",km:210,
+ {id:"kabini",name:"Kabini",region:"Nagarhole, Karnataka",code:"KBN",vibe:["Wildlife","Nature"],days:2,nights:1,mode:"bus",km:210,lat:11.969,lng:76.35,
   best:[10,11,12,1,2,3,4,5],
   pitch:"Leopards, elephants and maybe the black panther, on jeep and boat safaris.",
   out:"Shared cab or bus via Mysuru to HD Kote, ~5 hrs",
@@ -137,7 +138,7 @@ const TRIPS = [
   plan:["Leave at 6 am, check in by lunch, afternoon jeep safari in Nagarhole.","Morning boat safari on the Kabini backwaters, brunch, drive home."],
   tips:["Jungle Lodges packages bundle stay, meals and safaris; book on their site.","Weekday stays are noticeably cheaper."]},
 
- {id:"andaman",name:"Andaman Islands",region:"Port Blair & Havelock",code:"IXZ",vibe:["Beach"],days:5,nights:4,mode:"flight",km:1360,
+ {id:"andaman",name:"Andaman Islands",region:"Port Blair & Havelock",code:"IXZ",vibe:["Beach"],days:5,nights:4,mode:"flight",km:1360,lat:11.6234,lng:92.7265,road:false,
   best:[11,12,1,2,3,4],
   pitch:"Radhanagar beach and coral reefs. Possible on ₹25k only with early flight booking and budget stays.",
   out:"Flight BLR → IXZ, ~2.5 hrs",
