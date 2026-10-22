@@ -232,6 +232,7 @@ function renderTicket(t, animate){
       <div>
         <div class="dest-name ${animate?"landed":""}" id="destName">${t.name}</div>
         <div class="dest-sub">${t.region} · ${c.out}</div>
+        <button class="visit-toggle ${been?"on":""}" type="button" id="visitTop" aria-pressed="${!!been}">${been?`✓ Been to ${t.name}`:`I've been to ${t.name}`}</button>
       </div>
       <div class="badges">
         ${been ? `<span class="badge season">✓ Visited</span>` : ""}
@@ -286,7 +287,7 @@ function renderTicket(t, animate){
     state.travel = b.dataset.m; renderTicket(t,false); renderHistory(); syncHash();
     if (window.TravelMap) TravelMap.refresh();
   };
-  $("visitBtn").onclick = ()=>toggleTripVisited(t);
+  $("visitBtn").onclick = $("visitTop").onclick = ()=>toggleTripVisited(t);
   $("mapBtn").onclick = ()=>{ if (window.TravelMap) TravelMap.focusTrip(t); };
   $("copyBtn").onclick = ()=>copyText(planText(t,c), "Plan copied");
   $("shareBtn").onclick = ()=>copyText(shareUrl(), "Link copied");

@@ -149,3 +149,7 @@ input[type=number]{width:84px;font-family:var(--mono)}
   .mapcard{padding:14px}
   .results li,.visited li{flex-wrap:wrap}
 }
+.visit-toggle{margin-top:10px;font:inherit;font-size:14px;font-weight:600;border:1.5px dashed var(--teal);background:transparent;color:var(--teal);border-radius:999px;padding:7px 16px;cursor:pointer}
+.visit-toggle::before{content:"＋ "}
+.visit-toggle.on{border-style:solid;border-color:var(--good);background:var(--good);color:var(--surface)}
+.visit-toggle.on::before{content:""}
